@@ -26,4 +26,6 @@ export class AppComponent {
     },
   ];
   selectedEmploye: Employe = new Employe();
+
+  search = '';
 }
