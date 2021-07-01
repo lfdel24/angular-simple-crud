@@ -1,78 +1,8 @@
 <div class="container">
-  <nav class="navbar navbar-light bg-light">
-    <div class="container-fluid">
-      <a class="navbar-brand" href="#">List of employes</a>
-      <div class="container-fluid" *ngIf="!isNewEmploye">
-        <div class="input-group mb-3">
-          <input
-            [(ngModel)]="search"
-            (ngModelChange)="onKey($event)"
-            type="text"
-            class="form-control"
-            placeholder="Search"
-            aria-label="Search"
-            aria-describedby="id-search"
-            autofocus
-          />
-        </div>
-        <div>
-          <button
-            type="button"
-            class="btn btn-primary btn-sm"
-            (click)="newEmploye()"
-          >
-            New
-          </button>
-          <button
-            type="button"
-            class="btn btn-primary btn-sm"
-            (click)="clear()"
-          >
-            Clear
-          </button>
-        </div>
-      </div>
-    </div>
+  <nav class="navbar navbar-light">
+    <a class="navbar-brand" href="#">List of employes</a>
+    <app-search></app-search>
   </nav>
-  <form *ngIf="isNewEmploye">
-    <div class="container-fluid bg-light">
-      <label for="forName" class="form-label">Name</label>
-      <input
-        [(ngModel)]="selectedEmploye.name"
-        [ngModelOptions]="{ standalone: true }"
-        type="text"
-        class="form-control input-group"
-        id="forName"
-        aria-describedby="nameHelp"
-      />
-      <div id="nameHelp" class="form-text">
-        We'll never share your name with anyone else.
-      </div>
-      <input
-        [(ngModel)]="selectedEmploye.county"
-        [ngModelOptions]="{ standalone: true }"
-        type="text"
-        class="form-control"
-        id="forCountry"
-        aria-describedby="countryHelp"
-      />
-      <div id="countryHelp" class="form-text">
-        We'll never share your country with anyone else.
-      </div>
-      <button
-        type="submit"
-        class="btn btn-primary btn-sm m-2"
-        (click)="saveOREdit()"
-      >
-        Save</button
-      ><button
-        type="button"
-        class="btn btn-primary btn-sm m-2"
-        (click)="cancel()"
-      >
-        Cancel
-      </button>
-    </div>
-  </form>
 </div>
+<app-save-or-edit></app-save-or-edit>
 <app-listar></app-listar>
