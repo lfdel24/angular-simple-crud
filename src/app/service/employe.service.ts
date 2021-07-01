@@ -25,6 +25,14 @@ export class EmployeService {
     },
   ];
 
+  selectedEmploye: Employe = new Employe();
+  isNewEmploye: boolean = false;
+  search: string = '';
+
+  changueIsNewEmploye() {
+    this.isNewEmploye = !this.isNewEmploye;
+  }
+
   getEmployes(): Employe[] {
     return this.list;
   }

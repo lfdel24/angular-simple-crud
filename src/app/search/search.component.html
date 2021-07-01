@@ -1,6 +1,4 @@
-<p>search works!</p>
-
-<!-- <div class="container" *ngIf="!isNewEmploye">
+<div class="container" *ngIf="!getIsNewEmploye()">
   <div class="input-group mb-3">
     <input
       [(ngModel)]="search"
@@ -18,7 +16,7 @@
       type="button"
       class="btn btn-primary btn-sm"
       style="margin-right: 10px"
-      (click)="newEmploye()"
+      (click)="changueIsNewEmploye()"
     >
       New
     </button>
@@ -26,4 +24,4 @@
       Clear
     </button>
   </div>
-</div> -->
+</div>

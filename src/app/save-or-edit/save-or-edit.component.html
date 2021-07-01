@@ -1,21 +1,20 @@
-<p>save-or-edit works!</p>
-<!-- 
-<form *ngIf="isNewEmploye">
+<div class="container">
+  <form *ngIf="getIsNewEmploye()">
     <div class="container-fluid bg-light">
-      <label for="forName" class="form-label">Name</label>
+      <label for="inputTextName" class="form-label">Name</label>
       <input
-        [(ngModel)]="selectedEmploye.name"
+        [(ngModel)]="getSelectedEmploye().name"
         [ngModelOptions]="{ standalone: true }"
         type="text"
         class="form-control input-group"
-        id="forName"
+        id="inputTextName"
         aria-describedby="nameHelp"
       />
       <div id="nameHelp" class="form-text">
         We'll never share your name with anyone else.
       </div>
       <input
-        [(ngModel)]="selectedEmploye.county"
+        [(ngModel)]="getSelectedEmploye().county"
         [ngModelOptions]="{ standalone: true }"
         type="text"
         class="form-control"
@@ -39,4 +38,5 @@
         Cancel
       </button>
     </div>
-  </form> -->
+  </form>
+</div>
