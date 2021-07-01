@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { Employe } from './models/employe';
+import { EmployeService } from './service/employe.service';
 
 @Component({
   selector: 'app-root',
@@ -7,61 +8,33 @@ import { Employe } from './models/employe';
   styleUrls: ['./app.component.css'],
 })
 export class AppComponent {
-  //
-  listEmploye: Employe[] = [
-    {
-      id: 1,
-      name: 'Leonardo De la cruz',
-      county: 'Colombia',
-    },
-    {
-      id: 2,
-      name: 'Juana Maria',
-      county: 'Venezuela',
-    },
-    {
-      id: 3,
-      name: 'Oscar Barajas',
-      county: 'Mex',
-    },
-  ];
+  constructor(private service: EmployeService) {}
+
   selectedEmploye: Employe = new Employe();
   search: string = '';
-  isVisible: boolean = false;
-  focusSearch: boolean = true;
-  focusName: boolean = false;
+  isNewEmploye: boolean = false;
 
   onKey(value: any): void {
     console.log(value);
   }
 
-  new(): void {
-    this.isVisible = !this.isVisible;
-    this.focusSearch = false;
-    this.focusName = true;
+  newEmploye(): void {
+    this.isNewEmploye = !this.isNewEmploye;
   }
 
   saveOREdit(): void {
-    this.selectedEmploye.id = this.listEmploye.length + 1;
-    this.listEmploye.push(this.selectedEmploye);
+    this.selectedEmploye.id = this.service.getLength() + 1;
+    this.service.add(this.selectedEmploye);
     this.selectedEmploye = new Employe();
-    console.log(this.listEmploye.length);
   }
 
-  delete(id: number): void {
-    this.listEmploye = this.listEmploye.filter((value) => value.id !== id);
-  }
   clear(): void {
     this.selectedEmploye = new Employe();
     this.search = '';
-    this.isVisible = false;
-    this.focusSearch = true;
-    this.focusName = false;
+    this.isNewEmploye = false;
   }
 
   cancel(): void {
-    this.isVisible = false;
-    this.focusSearch = true;
-    this.focusName = false;
+    this.isNewEmploye = false;
   }
 }
