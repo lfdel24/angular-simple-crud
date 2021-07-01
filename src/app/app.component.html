@@ -10,11 +10,20 @@
           aria-label="Search"
           aria-describedby="id-search"
           [(ngModel)]="search"
+          (ngModelChange)="onKey($event)"
         />
       </div>
       <div>
-        <button type="button" class="btn btn-primary btn-sm m-2">New</button>
-        <button type="button" class="btn btn-primary btn-sm">Clear</button>
+        <button
+          type="button"
+          class="btn btn-primary btn-sm m-2"
+          (click)="new()"
+        >
+          New
+        </button>
+        <button type="button" class="btn btn-primary btn-sm" (click)="clear()">
+          Clear
+        </button>
       </div>
     </div>
   </nav>
@@ -33,7 +42,7 @@
         <td>{{ employe.name }}</td>
         <td>{{ employe.county }}</td>
         <td>
-          <i class="bi bi-trash m-3"></i>
+          <i class="bi bi-trash m-3" (click)="delete(employe.id)"></i>
           <i class="bi bi-pencil-square"></i>
         </td>
       </tr>
