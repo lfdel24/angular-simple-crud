@@ -26,20 +26,25 @@ export class AppComponent {
     },
   ];
   selectedEmploye: Employe = new Employe();
-  newEmploye: Employe = new Employe();
-
   search: string = '';
+  isVisible: boolean = false;
+  focusSearch: boolean = true;
+  focusName: boolean = false;
 
   onKey(value: any): void {
     console.log(value);
   }
 
   new(): void {
-    this.newEmploye = new Employe();
-    this.newEmploye.id = this.listEmploye.length + 1;
-    this.newEmploye.name = 'Pabcjkdfsdnkjanda';
-    this.newEmploye.county = 'andkajnsjkadnak';
-    this.listEmploye.push(this.newEmploye);
+    this.isVisible = !this.isVisible;
+    this.focusSearch = false;
+    this.focusName = true;
+  }
+
+  saveOREdit(): void {
+    this.selectedEmploye.id = this.listEmploye.length + 1;
+    this.listEmploye.push(this.selectedEmploye);
+    this.selectedEmploye = new Employe();
     console.log(this.listEmploye.length);
   }
 
@@ -49,5 +54,14 @@ export class AppComponent {
   clear(): void {
     this.selectedEmploye = new Employe();
     this.search = '';
+    this.isVisible = false;
+    this.focusSearch = true;
+    this.focusName = false;
+  }
+
+  cancel(): void {
+    this.isVisible = false;
+    this.focusSearch = true;
+    this.focusName = false;
   }
 }
